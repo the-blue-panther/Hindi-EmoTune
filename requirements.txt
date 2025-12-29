@@ -1,0 +1,57 @@
+# ============================================================
+# Bengali EmoKnob — Requirements (Stable CPU/GPU Compatible)
+# ============================================================
+# To install: pip install -r requirements.txt
+# Works on: Windows / Linux / macOS
+# Python: 3.9 – 3.12
+# ============================================================
+
+# ----------------- Core Deep Learning Stack -----------------
+# These versions support both CPU and CUDA builds.
+torch==2.3.0
+torchvision==0.18.0
+torchaudio==2.3.0
+# ⚙️ On a GPU system, reinstall these using:
+#     pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+# or the appropriate CUDA version from https://pytorch.org/get-started/locally/
+
+# ----------------- Transformer & Model Frameworks -----------------
+transformers==4.41.1
+accelerate==0.33.0
+safetensors==0.4.3
+einops==0.7.0
+
+# ----------------- Audio Processing -----------------
+librosa==0.10.2.post1
+soundfile==0.12.1
+sounddevice==0.4.6
+ffmpeg-python==0.2.0
+
+# ----------------- Visualization & Scientific Utils -----------------
+matplotlib==3.9.0
+scikit-learn==1.5.0
+ipywidgets==8.1.2
+jupyter==1.0.0
+
+# ----------------- Speech & TTS Models -----------------
+# Coqui TTS (XTTS v2 compatible)
+TTS==0.22.0
+# OpenAI Whisper ASR for evaluating Word Error Rate (WER)
+openai-whisper==20231117
+# Speaker verification model (ECAPA-TDNN)
+speechbrain==0.5.16
+noisereduce==3.0.3
+
+# ----------------- Data & Utility Libraries -----------------
+numpy>=1.24
+# ✅ Fixed pandas conflict: TTS requires pandas<2.0
+pandas>=1.4,<2.0
+tqdm>=4.65
+
+# ----------------- Optional & Supporting Tools -----------------
+# ffmpeg is required for multi-format audio conversion.
+# If system ffmpeg is not installed, use this Python wrapper:
+ffmpeg
+
+# Utility: appdirs (used to locate user cache dirs)
+appdirs==1.4.4
