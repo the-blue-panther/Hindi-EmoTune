@@ -20,7 +20,7 @@ The method is inspired by *EmoKnob*, but reformulated to operate on **prosody/st
 - ✅ **Training-free emotion control** (no fine-tuning or retraining)
 - ✅ **One-shot & few-shot emotion transfer**
 - ✅ **Continuous emotion strength control** via a scalar factor
-- ✅ **Explicit disentanglement of emotion from linguistic content**
+- ✅ **Paired recordings control sentence content when estimating style differences**
 - ✅ **Hindi-focused experimentation**
 - ✅ **Model-agnostic design** (applicable beyond XTTS)
 
@@ -72,7 +72,7 @@ For a paired sample:
 The emotion direction is computed as:
 
 $$
-v_e = (z_e - z_n) / ||z_e - z_n||
+v_e = z_e - z_n
 $$
 
 
@@ -106,7 +106,7 @@ z' = z_s + \alpha \cdot v_e
 $$
 
 
-- $\alpha = 0$ → neutral speech  
+- $\alpha = 0$ → original reference conditioning  
 - Increasing $\alpha$ → stronger emotional expressiveness
 
 ---
@@ -134,7 +134,9 @@ $$
 ![Happy Emotion PCA](Images/happy_pca.png)
 ![Angry Emotion PCA](Images/angry_pca.png)
 
-### Inference Metrics
+### Historical inference metrics
+
+The historical curves labelled WER used relative transcript length differences. They should not be interpreted as word error rates. Updated evaluations use aligned word errors and a separate CSV.
 
 ![Sad Metrics](Images/sad_metrics.png)
 ![Happy Metrics](Images/happy_metrics.png)
@@ -178,7 +180,7 @@ Improvements in encoder/decoder quality directly translate to better results.
 
 ## References
 
-- H. Kim et al., *EmoKnob: Fine-Grained Emotion Control for Text-to-Speech*, arXiv:2410.00316, 2024  
+- H. Chen, R. Chen and J. Hirschberg, *EmoKnob: Enhance Voice Cloning with Fine-Grained Emotion Control*, arXiv:2410.00316, 2024  
 - Coqui AI, *XTTS: A Cross-Lingual, Multi-Speaker Text-to-Speech Model*, 2023–2024  
 - Tacotron, WaveNet, and related neural TTS literature
 
@@ -195,7 +197,7 @@ Supervisor: Swami Punyeshwarananda
 
 ## License
 
-This project is released for **academic and research use**.  
+The software is distributed under the MIT license.  
 Please cite appropriately if used in research or derivative work.
 
 
