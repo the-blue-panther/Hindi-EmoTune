@@ -9,7 +9,8 @@ plt.rcParams['grid.alpha'] = 0.3
 plt.rcParams['figure.facecolor'] = 'white'
 
 # Load Data
-csv_path = 'd:/Downloads/Bengali_EmoKnob/data/outputs/comprehensive_metrics_log.csv'
+from pathlib import Path
+csv_path = Path(__file__).resolve().parents[1] / 'data/outputs/metrics_word_alignment_v1.csv'
 df = pd.read_csv(csv_path)
 
 # Clean Data: Convert columns to numeric, handle errors
@@ -24,7 +25,7 @@ def plot_emotion_metrics(emotion_name, output_filename):
     data = df[df['Emotion'].str.lower() == emotion_name.lower()].sort_values('Alpha')
     
     # Group by Alpha to handle multiple runs (take mean)
-    data = data.groupby('Alpha').mean().reset_index()
+    data = data.groupby('Alpha').mean(numeric_only=True).reset_index()
     
     if data.empty:
         print(f"No data found for emotion: {emotion_name}")
